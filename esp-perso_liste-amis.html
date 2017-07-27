@@ -6,69 +6,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
     <link href="style.css" rel="stylesheet">
   </head>
 <!--NB : utilisation de div specialisees html5. Header, Footer-->
 <!--NB : du CSS est inscrit dans cette page pour les test.
         Donc mettre le Style dans le .css-->
   <body>
-    <header> <!--en tête de la page, avec lien vers accueil et lien vers deconexion-->
-      <div class="lien-page-SOS">
-        <a href="sos.html">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JpOoHM6hItjGgrX9QyIR4rCSDx5k-YpS3zuk4IddlJ1Vp3xm"
-               alt="logo du site"
-               title="Retour page SOS"
-               width="50px"/> <!--To do : ajouter un href page SOS-->
-        </a>
-      </div class="lien-">
-      <div class="lien-page-accueil">
-        <p><a href="index.html"
-              title="Quitter votre compte & Retour vers page Bienvenue">
-            déconnexion
-            </a>
-        </p>
+    <header>
+      <div id="contener-button" class="btn-group" role="group">
+          <button type="button"
+                  class="btn btn-default btn-lg active"
+                  title="Quitter mon compte"
+                  onclick="self.location.href='index.html'"
+                  style="padding:5px">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JpOoHM6hItjGgrX9QyIR4rCSDx5k-YpS3zuk4IddlJ1Vp3xm"
+                       alt="logo du site"
+                       title="Retour page SOS"
+                       style="width:50px"/></button>
+      </div>
+      <div class="lien-page-accueil container-fluid">
+           <!-- A VOIR PK LE "CIRCLE" NE PREND PAS -->
+          <img class="img-circle img-profil"
+               src="https://www.centraltest.com/sites/all/files/bf5_0.png"
+               alt="Image personnalisable du profil de l'utilisateur"
+               title="Mon compte">
+          <div id="contener-button" class="btn-group" role="group">
+              <button type="button"
+                      class="btn btn-lg btn-primary"
+                      title="Quitter mon compte"
+                      onclick="self.location.href='index.html'">Déconnexion</button>
+          </div>
       </div>
     </header>
-    <hr/>
-    <div class="bandeaux-espace-perso">
-      <p>Amis</p>
-    <hr/>
+
+    <div class=" row esp-perso">
+        <h3>Espace personnel</h3>
     </div>
-    <div class="contener-people">
+
+    <!-- bandeau "Amis"-->
+    <div class="row bandeaux">
+        <h3>Amis</h3>
+    </div>
+
+
+    <div class="container-fluid">
+    <!--<div class="contener-people">-->
       <!--Ajouter un Ami-->
-      <div class="one-people" id="add-people">
-        <img src="new-people.png"
-             alt="image ajouter un amifriend"
-             title="ajouter un Ami"
-             style="width:50px">
-      </div>
-      <!--Un Ami-->
-      <div class="one-people">
-        <img src="one-people.png"
-             alt="photo de cet ami"
-             style="width:50px">
-        <button type="button" class="btn btn-lg btn-primary">Chat</button>
-        <button type="button" class="btn btn-lg btn-primary">Supprimer</button>
-      </div>
-      <!--Un Ami-->
-      <div class="one-people">
-        <img src="one-people.png"
-             alt="photo de cet ami"
-             style="width:50px">
-        <button type="button" class="btn btn-lg btn-primary">Chat</button>
-        <button type="button" class="btn btn-lg btn-primary">Supprimer</button>
-      </div>
-      <!--Un Ami-->
-      <div class="one-people">
-      <img src="one-people.png"
-           alt="photo de cet ami"
-           style="width:50px">
-      <button type="button" class="btn btn-lg btn-primary">Chat</button>
-      <button type="button" class="btn btn-lg btn-primary">Supprimer</button>
-      </div>
+    <div class="row">
+        <div class="col-md-1">
+            <img src="new-people.png"
+                 alt="image ajouter un amifriend"
+                 title="Ajouter un Ami"
+                 style="width:50px">
+            <button type="button"
+                         class="btn btn-lg btn-primary"
+                         title="Aller à la messagerie">Ajouter</button>
+        </div>
     </div>
+      <!--Un Ami-->
+      <div class="row">
+          <div class="one-people col-md-1">
+              <img src="one-people.png"
+                     class="photo-people"
+                     alt="photo de cet ami"
+                     style="width:50px">
+              <button type="button"
+                      class="btn btn-lg btn-primary"
+                      title="Aller à la messagerie"
+                      onclick="self.location.href='esp-perso_messagerie.html'">Chat</button>
+              <button type="button"
+                      class="btn btn-lg btn-primary"
+                      title="Retirer de la liste d'amis">Retirer</button>
+          </div>
+      </div>
+      <!--Un Ami-->
+      <div class="row">
+          <div class="one-people col-md-1">
+              <img src="one-people.png"
+                     class="photo-people"
+                     alt="photo de cet ami"
+                     style="width:50px">
+              <button type="button"
+                      class="btn btn-lg btn-primary"
+                      title="Aller à la messagerie"
+                      onclick="self.location.href='esp-perso_messagerie.html'">Chat</button>
+              <button type="button"
+                      class="btn btn-lg btn-primary"
+                      title="Retirer de la liste d'amis">Retirer</button>
+          </div>
+      </div>
+      <!--Un Ami-->
+      <div class="row">
+          <div class="one-people col-md-1">
+              <img src="one-people.png"
+                       class="photo-people"
+                       alt="photo de cet ami"
+                       style="width:50px">
+              <button type="button"
+                      class="btn btn-lg btn-primary"
+                      title="Aller à la messagerie"
+                      onclick="self.location.href='esp-perso_messagerie.html'">Chat</button>
+              <button type="button"
+                      class="btn btn-lg btn-primary"
+                      title="Retirer de la liste d'amis">Retirer</button>
+          </div>
+      </div>
+  </div><!--div du contener-people-->
     <!--Le Footer est présent à la fin de chaque page du site SOSgalR-->
-    <hr/>
+
     <footer>
       <p> SOSgalR,2017
       </p>
