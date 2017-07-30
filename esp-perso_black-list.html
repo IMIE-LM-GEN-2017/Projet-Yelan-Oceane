@@ -6,69 +6,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
     <link href="style.css" rel="stylesheet">
   </head>
 <!--NB : utilisation de div specialisees html5. Header, Footer-->
 <!--NB : du CSS est inscrit dans cette page pour les test.
         Donc mettre le Style dans le .css-->
   <body>
-    <header> <!--en tête de la page, avec lien vers accueil et lien vers deconexion-->
-      <div class="lien-page-SOS">
-        <a href="sos.html">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JpOoHM6hItjGgrX9QyIR4rCSDx5k-YpS3zuk4IddlJ1Vp3xm"
-               alt="logo du site"
-               title="Retour page SOS"
-               width="50px"/> <!--To do : ajouter un href page SOS-->
-        </a>
-      </div class="lien-">
-      <div class="lien-page-accueil">
-        <p><a href="index.html"
-              title="Quitter votre compte & Retour vers page Bienvenue">
-            déconnexion
+      <header>
+        <div id="contener-button" class="btn-group" role="group">
+            <button type="button"
+                    class="btn btn-default btn-lg active"
+                    title="Quitter mon compte"
+                    onclick="self.location.href='index.html'"
+                    style="padding:5px">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6JpOoHM6hItjGgrX9QyIR4rCSDx5k-YpS3zuk4IddlJ1Vp3xm"
+                         alt="logo du site"
+                         title="Retour page SOS"
+                         style="width:50px"/></button>
+        </div>
+        <div class="lien-page-accueil container-fluid">
+            <a href="esp-perso.html">
+               <img class="img-circle img-profil"
+                    src="https://www.centraltest.com/sites/all/files/bf5_0.png"
+                    alt="Image personnalisable du profil de l'utilisateur"
+                    title="Mon compte">
             </a>
-        </p>
-      </div>
-    </header>
-    <hr/>
-    <div class="bandeaux-espace-perso">
-      <p>Blacklist</p>
-    <hr/>
+            <div id="contener-button" class="btn-group" role="group">
+                <button type="button"
+                        class="btn btn-lg btn-primary"
+                        title="Quitter mon compte"
+                        onclick="self.location.href='index.html'">Déconnexion</button>
+            </div>
+        </div>
+      </header>
+      <a href="esp-perso.html">
+        <div class=" row esp-perso">
+          <h3>Espace personnel</h3>
+        </div>
+      </a>
+<!-- Définition : -->
+  <!-- La Black List regroupe toutes les personnes envers lesquels l'utilisateur ne souhaite plus être contacté -->
+<!-- Fonctionnement : -->
+  <!-- Les personnes dont l'identifiant se retrouve dans cette Black List ne peuvent plus envoyer de demande d'Ami envers l'utilisateru -->
+  <!-- Les personnes dont l'identifiant se retrouve dans cette Black List ne peuvent plus envoyer, ni recevoir d'Appel SOSgalR lié à l'utilisateur -->
+  <!-- L'utilisateru peut Signaler cette personne blacklistée s'il a rencontré des problèmes avec elle. Des exemples de problèmes sont indiqués dans les Condition d'utilisation -->
+  <!-- Si l'utilisateru Retire une personne de sa Black List, alors cette personne est redirigée vers l'archive de la messagerie -->
+
+    <!-- bandeau "Ma black List"-->
+    <div class="row bandeaux ban-black-list">
+        <h3>Ma Black List</h3>
     </div>
-    <div class="contener-people">
+
+    <div class="container-fluid">
       <!--Ajouter une prsonne à blacklister-->
-      <div class="one-people" id="add-people">
-        <img src="new-people.png"
-             alt="image ajouter une personne à blacklister"
-             title="ajouter une personne à blacklister"
-             style="width:50px">
+      <div class="row">
+          <div class="col-md-1">
+              <img src="new-people.png"
+                   alt="image ajouter à la Black List"
+                   style="width:50px">
+              <button type="button"
+                      class="btn btn-lg btn-primary b-l"
+                      title="Ajouter une personne à la black-list"
+                      onclick="self.location.href='esp-perso_messagerie.html'">Ajouter</button>
+          </div>
       </div>
       <!--Une personne blacklistée-->
-      <div class="one-people">
-        <img src="one-people.png"
-             alt="photo de la personne blacklistée"
-             style="width:50px">
-        <button type="button" class="btn btn-lg btn-primary">Signaler</button>
-        <button type="button" class="btn btn-lg btn-primary">Retirer</button>
-      </div>
-      <!--Une personne blacklistée-->
-      <div class="one-people">
-        <img src="one-people.png"
-             alt="photo de la persnne blacklistée"
-             style="width:50px">
-        <button type="button" class="btn btn-lg btn-primary">Signaler</button>
-        <button type="button" class="btn btn-lg btn-primary">Retirer</button>
-      </div>
-      <!--Une personne blacklistée-->
-      <div class="one-people">
-      <img src="one-people.png"
-           alt="photo de la personne blacklistée"
-           style="width:50px">
-      <button type="button" class="btn btn-lg btn-primary">Signaler</button>
-      <button type="button" class="btn btn-lg btn-primary">Retirer</button>
-      </div>
-    </div>
+      <div class="row">
+          <div class="one-people col-md-1">
+              <img src="one-people.png"
+                     class="photo-people"
+                     alt="photo de la personne"
+                     style="width:50px">
+              <button type="button"
+                      class="btn btn-lg btn-primary b-l"
+                      title="Signaler cette personne">Signaler</button>
+              <button type="button"
+                      class="btn btn-lg btn-primary b-l"
+                      title="Retirer de la black-list">Retirer</button>
+            </div>
+       </div>
+       <!--Une personne blacklistée-->
+       <div class="row">
+           <div class="one-people col-md-1">
+               <img src="one-people.png"
+                      class="photo-people"
+                      alt="photo de la personne"
+                      style="width:50px">
+               <button type="button"
+                       class="btn btn-lg btn-primary b-l"
+                       title="Signaler cette personne">Signaler</button>
+               <button type="button"
+                       class="btn btn-lg btn-primary b-l"
+                       title="Retirer de la black-list">Retirer</button>
+             </div>
+        </div>
+        <!--Une personne blacklistée-->
+        <div class="row">
+            <div class="one-people col-md-1">
+                <img src="one-people.png"
+                     class="photo-people"
+                     alt="photo de la personne"
+                     style="width:50px">
+                <button type="button"
+                      class="btn btn-lg btn-primary b-l"
+                      title="Signaler cette personne">Signaler</button>
+                <button type="button"
+                      class="btn btn-lg btn-primary b-l"
+                      title="Retirer de la black-list">Retirer</button>
+             </div>
+        </div>
     <!--Le Footer est présent à la fin de chaque page du site SOSgalR-->
-    <hr/>
     <footer>
       <p> SOSgalR,2017
       </p>
