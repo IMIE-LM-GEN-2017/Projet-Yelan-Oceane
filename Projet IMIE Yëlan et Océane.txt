@@ -1,0 +1,100 @@
+Pr�sentation du site
+
+Objectif du site :
+Site responsive � l'intention les voyageurs pour trouver un h�te en urgence.
+Priorit�, il s'agit d'un site pour les cas d'urgence, o� des personnes en besoin d'un logement provisoir peuvent trouver un h�te le plus pr�s de leur position g�ographique (chez l'habitant, auberge, hotel, ...)
+Donc il se doit d'�tre facile d'utilisation
+
+Public vis� : Les voyageur, touristes, tout particulier ayant besoin d'un logement provisoir suite � un impr�vu.
+
+P�rim�tre : toute la France m�tropolitaine, dans un premier temps
+
+Type : r�seau social
+
+
+----------------------------------------------------------------------------------------------------------------
+Besoin : Trouver un h�berement en cas d'impr�vu. M�me si on la personne n'a pas les moyens de payer une auberge.
+	(impr�vu : si victime d'une arnaque sur B&B, que subitement la personne qui vous h�bergeant ne peut plus vous accueillir, qu'une temp�te de neige se d�clare !)
+
+
+R�ponse au besoin : Du c�t� de l'utilisateur
+		    	-> une liste d'h�te dans un rayon de 30 km est disponible selon votre g�olocalisation.
+		    	-> entrer en contact avec un h�te via une notification de validation, puis �change via mesagerie type email
+		    	-> si h�te toujours ok, il donne un code qui sera modifi� � chaque fois qu'il le fournit
+		    	-> l'utilisateur en tre ce code, ce qui lui donne ac�s � l'adresse de la personne
+	            Du c�t� de l'h�te
+			-> saisir son adresse de domicile pour la base de donn�
+			-> indiquer ses temps de disponibilit� (m�me si la personne est chez elle, elle est en droit de ne vouloir recevoir personne)
+
+
+----------------------------------------------------------------------------------------------------------------
+Limites :
+-> S�curit�
+	-> risque de cambriolage
+		- crypter les adresses et un code permet de la d�cripter
+		- le code est modifi� apr�s chaque entr�e (=supprimer puis reg�n�rer un code)
+	add	- vérifier l'adresse
+		-> riske de doublons
+			-stocker les codes supprim� dans une liste, et v�rifier apr�s chaque cr�ation de code qu'il ne soit pas d�j� pr�sent dans toute les autres listes
+        -> risque de malveillance de la part des h�tes
+		- pouvoir "v�rifier" le profil public des utilisateurs
+		- demander une notification <24h apr�s l'aide, sinon alert! personne � pr�venir
+		- commentaires sur l'h�te
+	-> risque de la part des utilisateurs
+		- avertissement : cette appli est un "kit de secours", elle ne se substitue pas � une pr�paration minutieuse, ni � du Couchsurfing proprement dit.
+		- commentaire � propos de l'utilisateur
+	-> Limiter les simple visiteurs du site
+	 	- Inscription obligatoire ou lingin AVANT l'acc�s au site/appli
+	-> Spam
+		-restriction sur le nombre "d'appel � l'aide" � un par semaine (ce qui encourage � bien se pr�parer)
+	-> Autres
+		-r�diger conditions d'utilisation
+
+----------------------------------------------------------------------------------------------------------------
+Fonctionnalit�s du site :
+-> Inscription (questionnaire)
+	-identit� (nom, prenom, nationalit�, �ge)
+	-situation (professionnelle, familiale, habitudes de vie(fumeur...), rythme de vie, animaux de Cie)
+	-r�sum� (motivation de l'inscription, valeurs, go�ts)
+	-coordonn�es masqu�es (t�l�phone, adresse domicile, email) "svp v�rifiez avant que votre adresse soit recommue par Google maps"
+-> espace priv�
+	-seul l'utilisateur � acc�s � certaines fonctionnalit�s
+	-param�rtres du profil
+	-ses Amis
+	-sa Blacklist
+	-historique des personnes accueillies
+-> notification par email
+	- premier mail, l'h�te peut accepter ou refuser une demande de conversation
+	- mail de notification � chaque message priv�
+	- fonction "Ami" pour continuer la conversation apr�s l'h�bergement, sinon blacklist.
+-> messagerie
+	-
+-> Impl�mentation Google maps
+	-
+-> "onglet Aide" + FAQ
+	-
+-> forum de discussion
+
+-> .....
+
+
+----------------------------------------------------------------------------------------------------------------
+Technologies n�cessaires :
+
+Partie Web :
+-HTML5 + CSS3 Media Queries -> Base du site (Statique, gestion du design et du responsive
+-Java Script -> Impl�mentation API Google Geolocalisation
+-PHP -> gestion utilisateurs + gestion de base de donn�es
+-base de donn� : MariaDB -> stocker/g�rer les comptes d'utilisateurs, les codes pour les adresse de domiciles, (messagerie)
+
+
+----------------------------------------------------------------------------------------------------------------
+[Modif] Boulot à faire répertorier tous les éléments de la BDD
+
+
+----------------------------------------------------------------------------------------------------------------
+Pour aller plus loin
+-> multilangue
+-> �tendre p�rimettre all over the world
+
+(� approfondir...)
