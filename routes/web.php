@@ -11,25 +11,24 @@
 |
 */
 
-Route::get('/users', 'UserController@index')->name('UserIndex');
-Route::get('/user/{id}', 'UserController@view')->name('ViewUser');
-Route::get('/addresses', 'AddressController@index')->name('AddressIndex');
-Route::get('/address/{id}', 'AddressController@view')->name('ViewUAddress');
-
-Route::group(['prefix' => 'admin'], function () {
-
-    Route::Auth();
-
-    Route::get('/users', 'Admin\UserController@index')->name('AdminIndexUser');
-    Route::get('/users/{id}', 'Admin\UserController@view')->name('AdminViewUser');
-    Route::get('/user/{id}/edit', 'Admin\UserController@edit')->name('AdminEditUser');
-    Route::post('/user/{id}/update', 'Admin\UserController@update')->name('AdminUpdateUser');
-    Route::get('/user/{id}/delete', 'Admin\UserController@delete')->name('AdminDeleteUser');
-
-    Route::get('/addresses', 'Admin\AddressController@index')->name('AdminIndexAddress');
-    Route::get('/addresses/{id}', 'Admin\AddressController@view')->name('AdminViewAddress');
-    Route::get('/address/{id}/delete', 'Admin\AddressController@delete')->name('AdminDeleteAddress');
-
+Route::get('/', function () {
+    return view('welcome');
 });
 
+Route::get('/', 'HomeController@index')->name('Home');
 
+Route::get('/users', 'UserController@index')->name('UserIndex');
+
+//Inscription
+Route::get('/users/new', 'UserController@getForm')->name('UserGetForm');
+Route::post('/users/post', 'UserController@postForm')->name('UserPostForm');
+
+//Contact
+Route::get('/contact', 'ContactController@getForm')->name('ContactGetForm');
+Route::post('/contactpost', 'ContactController@postForm')->name('ContactPostForm');
+
+//Images
+Route::get('monimage', 'ImageController@getForm');
+Route::post('monimage', 'ImageController@postForm');
+
+// Route pour les Admin

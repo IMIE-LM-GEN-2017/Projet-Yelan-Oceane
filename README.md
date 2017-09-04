@@ -1,99 +1,53 @@
-# Projet IMIE 2017 Océane-Yëlan
-## Cahier des charges
+<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-### Présentation du site
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
-Objectif du site :
-C'est une site responsive à l'intention des voyageurs qui désire trouver un hôte en urgence.
-Important, il s'agit d'un site pour les cas d'urgence, où des personnes en besoin de logement provisoire peuvent trouver potentiellement un hôteau plus près de leurs position géographique. (chez l'habitant, auberge, hôtel,...)
-Il se doit d'être facile, et rapide d'utilisation.
+## About Laravel
 
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
 
-Public visé :
-- Les voyageurs
-- les touristes
-- toutes personnes ayant besoin d'une logement provisoire suite a un imprévu.
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Le site visera dans un premier temps toute la france métropolitaine.
+Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
 
-C'est un site qui sera créer sur la base d'un réseaux social.
+## Learning Laravel
 
-Besoin : Trouver un hébergement en cas d'imprévu. Méme si on la personne n'a pas les moyens de payer une auberge.
-	(imprévu : si victime d'une arnaque sur B&B, que subitement la personne qui vous hébergeant ne peut plus vous accueillir, qu'une tempéte de neige se déclare !)
+Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
 
+If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
 
-Réponse au besoin : Du côté de l'utilisateur
-		    	- une liste d'hôte dans un rayon de 30 km est disponible selon votre géolocalisation.
-		    	- entrer en contact avec un hôte via une notification de validation, puis échange via mesagerie type email
-		    	- si hôte toujours ok, il donne un code qui sera modifié à chaque fois qu'il le fournit
-		    	- l'utilisateur en tre ce code, ce qui lui donne accès à l'adresse de la personne
-	                 Du côté de l'hôte
-			- saisir son adresse de domicile pour la base de donnée
-			- indiquer ses temps de disponibilité (méme si la personne est chez elle, elle est en droit de ne vouloir recevoir personne)
-Limites :
-- Sécurité
-	- risque de cambriolage
-		- crypter les adresses et un code permet de la décrypter
-		- le code est modifié aprés chaque entrée (=supprimer puis regénérer un code)
-	add	- vérifier l'adresse
-		- riske de doublons
-			-stocker les codes supprimé dans une liste, et vérifier aprés chaque création de code qu'il ne soit pas déjé présent dans toute les autres listes
-        - risque de malveillance de la part des hôtes
-		- pouvoir "véifier" le profil public des utilisateurs
-		- demander une notification <24h aprés l'aide, sinon alert! personne à prévenir
-		- commentaires sur l'hôte
-    	- risque de la part des utilisateurs
-		- avertissement : cette appli est un "kit de secours", elle ne se substitue pas à une préparation minutieuse, ni à du Couchsurfing proprement dit.
-		- commentaire à propos de l'utilisateur
-	- Limiter les simple visiteurs du site
-	 	- Inscription obligatoire ou lingin AVANT l'accés au site/appli
-	- Spam
-		-restriction sur le nombre "d'appel à l'aide" & un par semaine (ce qui encourage à bien se préparer)
-	- Autres
-		-rédiger conditions d'utilisation
+## Laravel Sponsors
 
+We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
 
-Fonctionnalités du site :
-- Inscription (questionnaire)
-	-identité (nom, prenom, nationalité, âge)
-	-situation (professionnelle, familiale, habitudes de vie(fumeur...), rythme de vie, animaux de Cie)
-	-résumé (motivation de l'inscription, valeurs, goùts)
-	-coordonnées masquées (téléphone, adresse domicile, email) "svp vérifiez avant que votre adresse soit recommue par Google maps"
-- espace privé
-  -seul l'utilisateur à accès à certaines fonctionnalités
-	-paramértres du profil
-	-ses Amis
-	-sa Blacklist
-	-historique des personnes accueillies
-- notification par email
-	- premier mail, l'hôte peut accepter ou refuser une demande de conversation
-	- mail de notification à chaque message privé
-	- fonction "Ami" pour continuer la conversation après l'hébergement, sinon blacklist.
-    - messagerie
-    - Implémentation Google maps
-    - "onglet Aide" + FAQ
-    -  forum de discussion
+- **[Vehikl](http://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[British Software Development](https://www.britishsoftware.co)**
+- **[Styde](https://styde.net)**
+- [Fragrantica](https://www.fragrantica.com)
+- [SOFTonSOFA](https://softonsofa.com/)
+- [User10](https://user10.com)
+- [Soumettre.fr](https://soumettre.fr/)
 
+## Contributing
 
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
 
+## Security Vulnerabilities
 
-----------------------------------------------------------------------------------------------------------------
-Technologies nécessaires :
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-Partie Web :
-- HTML5 + CSS3 Media Queries -> Base du site (Statique, gestion du design et du responsive
- - Java Script -> Implémentation API Google Geolocalisation
- - PHP -> gestion utilisateurs + gestion de base de données
-- base de donné : MariaDB -> stocker/gérer les comptes d'utilisateurs, les codes pour les adresse de domiciles, (messagerie)
+## License
 
-
-----------------------------------------------------------------------------------------------------------------
-[Modif] Boulot à faire répertorier tous les éléments de la BDD
-
-
-----------------------------------------------------------------------------------------------------------------
-Pour aller plus loin
-- multilangue
-- étendre périmettre all over the world
-
-(à approfondir...)
+The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
