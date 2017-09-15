@@ -15,11 +15,12 @@ class User extends Authenticatable
      * @var array
      */
     public $fillable = [
+        'pseudo',
+        'email',
+        'password',
         'lastname',
         'firstname',
         'birthdate',
-        'email',
-        'password',
         'description',
         'adressname',
         'pc',
@@ -36,13 +37,15 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    // PS CREER UNE TABLE POUR COMMENTAIRES
-    public function comments()
-    {
-        return $this->hasMany('App\Comment');
-    }
+    /*
+        // PS CREER UNE TABLE POUR COMMENTAIRES
+        public function comments()
+        {
+            return $this->hasMany('App\Comment');
+        }
+        */
 }

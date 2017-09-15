@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
     <meta charset="utf-8">
@@ -14,6 +15,10 @@
     <style> textarea { resize: none; } </style>
 </head>
 <body>
-@yield('content')
+<div>
+    @component('element.public-menu')
+    @endcomponent
+    @yield('content')
+</div>
 </body>
 </html>

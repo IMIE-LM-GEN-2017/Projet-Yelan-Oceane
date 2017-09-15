@@ -1,42 +1,38 @@
 @extends('templates.default')
 
+@section('title', 'Connexion')
+
 @section('content')
+    <div class="container is-centered"
+         style="text-align: center;
+                margin-left: 8.5em; margin-right: 8.5em; margin-bottom: 10em;
+                padding: 2em;
+                background-color: 9BA5CC;">
 
-    <form method="POST" action="{{ route('login') }}">
-        {{ csrf_field() }}
+        {!! Form::open(['route'=>'login']) !!}
 
-        <label for="email">Insert your Email address</label>
-
-        <input id="email" type="email" name="email" value="{{ old('email') }}" required
-               autofocus>
-
+        {!! Form::label('email', 'Adresse email', ['class'=>'label']) !!}
+        {!! Form::email('email', old('email'), ['required', 'autofocus', 'class'=>'input']) !!}
         @if ($errors->has('email'))
-            <span class="help-block">
-                <strong>{{ $errors->first('email') }}</strong>
-            </span>
+            <strong>{{ $errors->first('email') }}</strong>
         @endif
 
-        <label for="password">Write your password</label>
-        <input id="password" type="password" name="password" required>
-
+        {!! Form::label('password', 'Mot de passe', ['class'=>'label']) !!}
+        {!! Form::password('password', ['required', 'autofocus', 'class'=>'input']) !!}
         @if ($errors->has('password'))
-            <span class="help-block">
-                <strong>{{ $errors->first('password') }}</strong>
-            </span>
+            <strong>{{ $errors->first('password') }}</strong>
         @endif
 
-        <label>
-            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+        <label for="remember" class="label">
+            {!! Form::checkbox('remember', old('remember'), ['id'=>'remember', 'class'=>'checkbox']) !!} Se souvenir de
+            moi
         </label>
 
+        {!! Form::submit('Login', ['class'=>'button is-primary']) !!}
 
-        <button type="submit">
-            Login
-        </button>
+        {!! Form::close() !!}
 
-        <a href="{{ route('password.request') }}">
-            Have you forgotten your password ?
-        </a>
+        <a href="{{ route('password.request') }}">J'ai oublié mon mot de passe</a>
+    </div>
 
-    </form>
 @endsection

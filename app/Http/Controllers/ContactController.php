@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Contact;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Mail; // use Mail;
@@ -15,13 +16,16 @@ class ContactController extends Controller
         return view('contact.contact');
     }
 
-    public function postForm()
+    public function postForm(Request $request)
     {
-        Mail::send('email_contact', $request->all(),
-            function ($message) {
-                $message->to('oceanebertrand23@hotmail.fr')->subject('Contact');
-
-            });
+        Mail::to($request->dest)
+            ->send(new Contact($request->all()));
         return view('contact.confirm');
+    }
+
+    public function send(Request $request)
+    {
+
+
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
     <br>
-    <div class="col-sm-offset-3 col-sm-6">
+    <div class="col-sm-offset-3 col-sm-6 mycontainer">
         <div class="panel panel-info">
             <div class="panel-heading">Contactez-nous</div>
             <div class="panel-body">

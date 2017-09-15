@@ -17,9 +17,18 @@ $factory->define(App\User::class, function (Faker $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
+        'pseudo' => $faker->pseudo,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
+        'lastname' => $faker->lastname,
+        'firstname' => $faker->firstname,
+        'birthdate' => $faker->birthdate,
+        'description' => $faker->description,
+        'adressename' => $faker->adressname,
+        'pc' => $faker->pc,
+        'city' => $faker->city,
+        'department' => $faker->department,
+        'region' => $faker->region,
         'remember_token' => str_random(10),
     ];
 });
