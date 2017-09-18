@@ -135,26 +135,22 @@ class UserController extends Controller
         //Vérifier si la requête est correcte
         $data = $request->all();
 
-        $region = null;
-        $department = null;
-        $pc = null;
-        $city = null;
+        $results = User::query()->where('id', '>', 0);
 
-
-        if (isset($data['region']) && !empty($data['region'])) {
-            $region = User::query()->where('region', '=', $data['region']);
+        if (isset($data['results']) && !empty($data['results'])) {
+            $results->orWhere('results', '=', $data['results']);
         }
 
         if (isset($data['department']) && !empty($data['department'])) {
-            $department = User::query()->where('department', '=', $data['department']);
+            $results->orWhere('department', '=', $data['department']);
         }
 
         if (isset($data['pc']) && !empty($data['pc'])) {
-            $pc = User::query()->where('pc', 'LIKE', $data['pc']);
+            $results->orWhere('pc', 'LIKE', $data['pc']);
         }
 
         if (isset($data['city']) && !empty($data['city'])) {
-            $city = User::query()->where('city', 'LIKE', '%' . $data['city'] . '%');
+            $results->orWhere('city', 'LIKE', '%' . $data['city'] . '%');
         }
 
         //Préparation de la requête
@@ -162,10 +158,10 @@ class UserController extends Controller
 //        $users = User::query();
 //        $users->select();
 //
-//        //Récupérer tous les éléments correspondant à 'region',
-//        //à condition que la chaîne de caractère de 'region' soit égal à celui de la $request
-//        if ($request->has('region')) {
-//            $users->where('region', '=', '%' . $request->get('region') . '%');
+//        //Récupérer tous les éléments correspondant à 'results',
+//        //à condition que la chaîne de caractère de 'results' soit égal à celui de la $request
+//        if ($request->has('results')) {
+//            $users->where('results', '=', '%' . $request->get('results') . '%');
 //        }
 //
 //
@@ -174,11 +170,8 @@ class UserController extends Controller
 //        var_dump($resultats);
         //Retourner ces résultats dans la vue
         return view('sos.search_result', [
-            'region' => $region->get(),
-            'department' => $department->get(),
-            'pc' => $pc->get(),
-            'city' => $city->get(),
-            'search'=>$data
+            'results' => $results->get(),
+            'search' => $data
         ]);
     }
 }
