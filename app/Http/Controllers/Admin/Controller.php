@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Http\Controllers\Admin\Controller as DefaultController;
+use App\Http\Controllers\Controller as DefaultController;
 
 class Controller extends DefaultController
 {/*
