@@ -18,6 +18,75 @@ class ResetPasswordController extends Controller
     |
     */
 
+
+///////////////////////////////////////////////////////
+    // ESSAI DU CONTROL POUR ENVOYER LE FORMULAIRE D'OUBLI
+    //----------------------------------------------------
+    /**
+     * Display the form to request a password reset link.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getEmail()
+    {
+        return $this->showLinkRequestForm();
+    }
+    /**
+     * Display the form to request a password reset link.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLinkRequestForm()
+    {
+        if (view()->exists('auth.passwords.email')) { //CREER LA VIEW
+            return view('auth.passwords.email');
+        }
+
+        return view('auth.password');
+    }
+    /**
+     * Send a reset link to the given user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postEmail(Request $request)
+    {
+        return $this->sendResetLinkEmail($request);
+    }
+    /**
+     * Send a reset link to the given user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function sendResetLinkEmail(Request $request)
+    {
+        $this->validate($request, ['email' => 'required|email']);
+
+        $broker = $this->getBroker();
+
+        $response = Password::broker($broker)->sendResetLink($request->only('email'), function (Message $message) {
+            $message->subject($this->getEmailSubject());
+        });
+
+        switch ($response) {
+            case Password::RESET_LINK_SENT:
+                return $this->getSendResetLinkEmailSuccessResponse($response);
+
+            case Password::INVALID_USER:
+            default:
+                return $this->getSendResetLinkEmailFailureResponse($response);
+        }
+    }
+//////////////////////////////////////////////////////////
+
+
+
+
+
+
+
     use ResetsPasswords;
 
     /**

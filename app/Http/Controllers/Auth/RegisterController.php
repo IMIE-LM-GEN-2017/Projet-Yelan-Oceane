@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Lib\Lists;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -20,14 +22,14 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers, ThrottlesLogins;
 
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -48,9 +50,18 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'pseudo' => 'required|string|max:20',
+            'email' => 'required|string|email|max:60|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'lastname' => 'required|string|max:60',
+            'firstname'=>'required|string|max:60',
+            'birthdate'=>'required|string|max:60',
+            'description' =>'required|string|max:1000',
+            'adressname' =>'required|string|max:60',
+            'pc'=>'required|string|max:10',
+            'city'=>'required|string|max:60',
+            'department'=>'required|string|max:60',
+            'region'=>'required|string|max:60',
         ]);
     }
 
@@ -63,9 +74,18 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'pseudo' => $data['pseudo'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'lastname' => $data['lastname'] ,
+            'firstname'=> $data['firstname'],
+            'birthdate'=> $data['birthdate'],
+            'description'=>$data['description'],
+            'adressname'=>$data['adressname'],
+            'pc'=> $data['pc'],
+            'city'=> $data['city'],
+            'department'=> $data['department'],
+            'region'=> $data['region'],
         ]);
     }
 }

@@ -47,7 +47,12 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
-    {
+    {   //condition ajoutée
+        if($e instanceof \PDOException)
+        {
+            return response()->view('errors.pdo', [], 500);
+        }//fin de la condition ajoutée
+
         return parent::render($request, $exception);
     }
 }
